@@ -1,0 +1,82 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisições GET e POST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .get-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .post-button {
+            background-color: #007BFF;
+            color: white;
+        }
+        .response {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left; /* Alinhar o texto à esquerda */
+        }
+        .response div {
+            margin-bottom: 10px; /* Espaçamento entre os campos */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Faça uma Requisição</h1>
+
+        <!-- Formulário para cadastro de usuário -->
+        <form action="{% url 'post_usuario' %}" method="post">
+            {% csrf_token %}
+            <h2>Cadastrar Usuário</h2>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="number" name="cpf" placeholder="CPF" required>
+            <input type="date" name="data_nascimento" placeholder="Data de Nascimento" required>
+            <button type="submit" class="post-button">Cadastrar</button>
+        </form>
+
+        <!-- Formulário para busca de usuário -->
+        <form action="{% url 'get_usuario' %}" method="get">
+            <h2>Buscar Usuário</h2>
+            <input type="text" name="nome" placeholder="Nome" required>
+            <button type="submit" class="get-button">Buscar</button>
+        </form>
+
+       <div class="response">
+    {% if response %}
+        {% autoescape off %}
+            {{ response }}
+        {% endautoescape %}
+    {% endif %}
+</div>
+
+
+    </div>
+</body>
+</html>
