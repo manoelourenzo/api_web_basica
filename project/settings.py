@@ -126,5 +126,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEBUG = False
-ALLOWED_HOSTS = ['ec2-3-93-163-206.compute-1.amazonaws.com']  # Ajuste conforme necessário para produção
+ALLOWED_HOSTS = ['ec2-3-93-163-206.compute-1.amazonaws.com',' 3.93.163.206']  # Ajuste conforme necessário para produção
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
